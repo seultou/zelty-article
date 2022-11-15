@@ -1,0 +1,14 @@
+App\Model\Article\Article:
+  constraints:
+    - App\Validator\Article\Constraint\SameAuthor: ~
+  properties:
+    title:
+      - Length:
+          min: 1
+          max: 128
+          minMessage: 'constraint.article.minLength'
+          maxMessage: 'constraint.article.maxLength'
+    publishingDate:
+      - App\Validator\Article\Constraint\PublishingDateIsNotInPast: ~
+    status:
+      - App\Validator\Article\Constraint\StatusIsValid: ~

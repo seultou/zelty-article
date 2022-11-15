@@ -1,0 +1,36 @@
+article_field:
+  path: /article
+  controller: App\Controller\Article\Field
+  methods: OPTIONS
+
+article_list_search:
+  path: /article
+  controller: App\Controller\Article\ListSearch
+  methods: GET
+
+article_read:
+  path: /article/{id}
+  controller: App\Controller\Article\Read
+  methods: GET
+  requirements:
+    id: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+
+article_create:
+  path: /article
+  controller: App\Controller\Article\Create
+  methods: POST
+
+article_update:
+  path: /article/{id}
+  controller: App\Controller\Article\Update
+  methods: PUT
+  requirements:
+    id: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+
+article_delete:
+  path: /article/{id}
+  controller: App\Controller\Article\View
+  methods: DELETE
+  requirements:
+    id: ^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$
+

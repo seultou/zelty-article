@@ -1,0 +1,4 @@
+author_view:
+  path: /author/{id}
+  controller: App\Controller\Author\View
+  methods: GET

@@ -1,0 +1,16 @@
+App\Model\Article\Article:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+    title:
+      expose: true
+    contents:
+      expose: true
+    publishingDate:
+      expose: true
+      type: DateTimeImmutable<'Y-m-d H:i:s'>
+    status:
+      expose: true
+    author:
+      expose: true

@@ -1,0 +1,90 @@
+nelmio_api_doc:
+  documentation:
+    info:
+      title: Zelty API
+      description: API doc for Zelty app!
+      version: 1.0.0
+
+    paths:
+      /api/login_check:
+        post:
+          operationId: postCredentialsItem
+          tags:
+            - Token
+          summary: Allows to get the JWT token to log into
+          requestBody:
+            description: Create a new JWT token
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Credentials'
+          responses:
+            '200':
+              description: Get the JWT Token
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Token'
+      /api/article:
+        options:
+          summary: List available fields to create an article or to manipulate (sort, order by, search by, ...) the list
+        get:
+          summary: List all available articles (with a limit of 15 articles)
+        post:
+          summary: Create an article
+          requestBody:
+            description: Crate a new article
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Article'
+        put:
+          summary: Update an article
+      /api/article/{id}:
+        get:
+          summary: View an article
+
+
+    components:
+      schemas:
+        Article:
+          type: object
+          properties:
+            title:
+              type: string
+            contents:
+              type: string
+            publishingDate:
+              type: datetime
+            status:
+              type: string
+        Token:
+          type: object
+          properties:
+            token:
+              type: string
+              readOnly: true
+        Credentials:
+          type: object
+          properties:
+            username:
+              type: string
+              default: admin
+            password:
+              type: string
+              default: toto42
+      securitySchemes:
+        Bearer:
+          type: apiKey
+          description: 'Authorization: Bearer {jwt}'
+          name: Authorization
+          in: header
+    security:
+      - Bearer: [ ]
+  areas:
+    default:
+      path_patterns:
+        - ^/api(?!/doc$)
+    article:
+      path_patterns:
+        - /article

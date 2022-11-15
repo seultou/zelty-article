@@ -1,0 +1,26 @@
+App\Model\Article\Article:
+  type: entity
+  table: article
+  repositoryClass: App\Repository\Article\Article
+  id:
+    id:
+      type: uuid
+      generator:
+        strategy: CUSTOM
+      customIdGenerator:
+        class: doctrine.uuid_generator
+  fields:
+    title:
+      type: string
+      length: 128
+    contents:
+      type: text
+    status:
+      type: string
+    publishingDate:
+      type: datetime_immutable
+      nullable: true
+  manyToOne:
+    author:
+      targetEntity: App\Model\Author\Author
+      cascade: [ "persist" ]

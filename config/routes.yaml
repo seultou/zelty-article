@@ -1,0 +1,18 @@
+app.swagger_ui:
+  path: /api/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui, area: default }
+
+app.login_check:
+  path: /api/login_check
+  methods: POST
+
+app:
+  prefix: /api
+  resource: './routes/custom/'
+  type: directory
+
+home:
+  path: /
+  controller: App\Controller\Home
+  methods: GET

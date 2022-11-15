@@ -1,0 +1,18 @@
+App\Model\Author\Author:
+  type: entity
+  table: author
+  id:
+    id:
+      type: uuid
+      generator:
+        strategy: CUSTOM
+      customIdGenerator:
+        class: doctrine.uuid_generator
+  fields:
+    username:
+      type: string
+    password:
+      type: string
+  uniqueConstraints:
+    unique_author:
+      columns: [username]
